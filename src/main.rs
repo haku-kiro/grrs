@@ -6,13 +6,14 @@ struct Cli {
     path: std::path::PathBuf,
 }
 
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Cli::parse();
-    // Expect exits the program if the file cannot be read.
-    let content = std::fs::read_to_string(&args.path).expect("could not read file");
-    for line in content.lines() {
-        if line.contains(&args.pattern) {
-            println!("{}", line);
-        }
-    }
+    let result = std::fs::read_to_string(&args.path);
+    let content = match result {
+        Ok(content) => { content },
+        Err(err) => { return Err(err.into()); },
+    };
+
+    println!("{}", content);
+    Ok(())
 }
