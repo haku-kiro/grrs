@@ -8,7 +8,7 @@ struct Cli {
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Cli::parse();
-    let content = std::fs::read_to_string(&args.path)?;
+    let content = std::fs::read_to_string(&args.path).unwrap();
     println!("{}", content);
     Ok(())
 }
