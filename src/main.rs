@@ -20,3 +20,12 @@ fn main() -> Result<()> {
 
     Ok(())
 }
+
+#[test]
+fn check_answer_validty() {
+    assert_eq!(answer(), 42);
+}
+
+fn answer() -> usize {
+    42
+}
