@@ -1,5 +1,5 @@
-use clap::Parser;
 use anyhow::{Context, Result};
+use clap::Parser;
 
 #[derive(Parser)]
 struct Cli {
